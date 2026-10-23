@@ -1,8 +1,6 @@
 # No Air Check
 
-A small server-side Fabric mod for Minecraft 26.3 or newer that disables the vanilla "standing on air" support-block resend check. This check is unnecessary in my opinion and causes [MC-311474](https://mojira.dev/MC-311474) (The game can log that a player is standing on air even when they're not).
-
-Works on dedicated server, singleplayer, and LAN.
+A small server-side Fabric mod for Minecraft 26.3 or later that disables the vanilla "standing on air" support-block resend check. This check is unnecessary in my opinion, and causes [MC-311474](https://bugs.mojang.com/browse/MC/issues/MC-311474) (The game can log that a player is standing on air even when they're not) that spams the console and game logs with unnecessary messages.
 
 ## What it does
 
@@ -27,9 +25,10 @@ The jar is written to `build/libs/no-air-check-1.0.jar`.
 
 ## Requirements
 
-- Minecraft 26.3 or newer
-- Fabric Loader 0.19.5 or newer
+- Minecraft 26.3 or later
+- Fabric Loader 0.19.5 or later
 - Java 25
+- Fabric API is not required
 
 ## License
 
