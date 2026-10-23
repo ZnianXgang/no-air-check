@@ -1,7 +1,9 @@
 # No Air Check
 
-A small Fabric mod for Minecraft 26.3 or newer that disables the vanilla
+A small server-side Fabric mod for Minecraft 26.3 or newer that disables the vanilla
 "standing on air" support-block resend check.
+
+Works on dedicated server, singleplayer, and LAN.
 
 ## What it does
 
@@ -27,7 +29,7 @@ nor the forced block resend happens. Nothing else in the movement check is chang
 ./gradlew build
 ```
 
-The jar is written to `build/libs/noaircheck-1.0.jar`.
+The jar is written to `build/libs/no-air-check-1.0.jar`.
 
 ## Requirements
 
