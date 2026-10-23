@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "no-air-check",
+	"version": "${version}",
+	"name": "No Air Check",
+	"description": "Disables the vanilla \"standing on air\" check that logs and force-resends blocks below the player.",
+	"authors": [
+		"ZnianXgang"
+	],
+	"license": "CC0-1.0",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"me.znianxgang.noaircheck.NoAirCheck"
+		]
+	},
+	"mixins": [
+		"noaircheck.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"minecraft": ">=${minecraft_version}",
+		"java": ">=25"
+	}
+}
