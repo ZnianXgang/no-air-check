@@ -11,7 +11,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"me.znianxgang.noaircheck.NoAirCheck"
+			"me.znianxgang.noaircheck.fabric.NoAirCheckFabric"
 		]
 	},
 	"mixins": [

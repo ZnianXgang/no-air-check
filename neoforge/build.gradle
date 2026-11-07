@@ -1,0 +1,82 @@
+plugins {
+	id 'java-library'
+	id 'net.neoforged.moddev' version "${moddev_version}"
+	id 'maven-publish'
+}
+
+base {
+	archivesName = "no-air-check-neoforge"
+}
+
+java {
+	// Minecraft 26.3 ships Java 25 to end users, so mods target Java 25.
+	toolchain.languageVersion = JavaLanguageVersion.of(25)
+	withSourcesJar()
+}
+
+// Loader-agnostic sources and mixin configuration shared with the Fabric build.
+sourceSets.main {
+	java.srcDir rootProject.file('common/src/main/java')
+	resources.srcDir rootProject.file('common/src/main/resources')
+}
+
+neoForge {
+	version = project.neo_version
+
+	runs {
+		client {
+			client()
+		}
+
+		server {
+			server()
+			programArgument '--nogui'
+		}
+	}
+
+	mods {
+		// The name must match the modId declared in neoforge.mods.toml.
+		"${project.neo_mod_id}" {
+			sourceSet(sourceSets.main)
+		}
+	}
+}
+
+// Expands the ${...} placeholders in src/main/templates into a real
+// META-INF/neoforge.mods.toml at build time.
+def generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+	def replaceProperties = [
+			minecraft_version_range: project.property('minecraft_version_range'),
+			neo_version            : project.property('neo_version'),
+			mod_id                 : project.property('neo_mod_id'),
+			mod_name               : project.property('mod_name'),
+			mod_license            : project.property('mod_license'),
+			mod_version            : project.version
+	]
+	inputs.properties replaceProperties
+	expand replaceProperties
+	from "src/main/templates"
+	into "build/generated/sources/modMetadata"
+}
+
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+}
+
+jar {
+	from("${rootProject.projectDir}/LICENSE") {
+		rename { "${it}_no-air-check-neoforge" }
+	}
+}
+
+// configure the maven publication
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+}

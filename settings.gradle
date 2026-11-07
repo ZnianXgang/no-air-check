@@ -9,5 +9,16 @@ pluginManagement {
 	}
 }
 
-// Should match your modid
+// ModDevGradle runs a few of its internal tools on a Java 21 toolchain, which is
+// not necessarily the JDK running Gradle (Java 25). The foojay resolver lets
+// Gradle provision that JDK automatically on fresh machines and CI runners.
+plugins {
+	id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
 rootProject.name = 'no-air-check'
+
+// One subproject per mod loader. Shared, loader-agnostic code lives in
+// common/ and is added to both projects as an extra source directory.
+include 'fabric'
+include 'neoforge'
