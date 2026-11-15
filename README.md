@@ -28,7 +28,7 @@ The NeoForge mod id uses an underscore because NeoForge only accepts `[a-z][a-z0
 
 - Minecraft 26.3 or later
 - Java 25
-- Fabric Loader 0.19.5 or later (Fabric), or NeoForge 26.3.0.101 or later (NeoForge)
+- Fabric Loader 0.19.3 or later (Fabric), or NeoForge 26.3.0.76 or later (NeoForge)
 - Fabric API is not required, and no other mod is needed on either loader
 
 The mod is server-side only. On NeoForge, `displayTest` is set to `IGNORE_ALL_VERSION`, so clients without the mod are not rejected.

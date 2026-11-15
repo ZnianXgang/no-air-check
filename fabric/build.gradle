@@ -15,7 +15,7 @@ repositories {
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc:fabric-loader:${project.fabric_version}"
 }
 
 // Loader-agnostic sources and mixin configuration shared with the NeoForge build.
@@ -25,15 +25,15 @@ sourceSets.main {
 }
 
 processResources {
-	def props = [
-			version          : project.version,
-			minecraft_version: project.minecraft_version,
-			loader_version   : project.loader_version
+	def replaceProperties = [
+			version: project.version,
+			minecraft_version: project.property('minecraft_version'),
+			fabric_version: project.property('fabric_version')
 	]
-	inputs.properties props
+	inputs.properties replaceProperties
 
 	filesMatching("fabric.mod.json") {
-		expand props
+		expand replaceProperties
 	}
 }
 

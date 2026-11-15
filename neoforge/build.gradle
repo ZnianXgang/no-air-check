@@ -21,7 +21,7 @@ sourceSets.main {
 }
 
 neoForge {
-	version = project.neo_version
+	version = project.neoforge_version
 
 	runs {
 		client {
@@ -36,7 +36,7 @@ neoForge {
 
 	mods {
 		// The name must match the modId declared in neoforge.mods.toml.
-		"${project.neo_mod_id}" {
+		"no_air_check" {
 			sourceSet(sourceSets.main)
 		}
 	}
@@ -46,12 +46,8 @@ neoForge {
 // META-INF/neoforge.mods.toml at build time.
 def generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
 	def replaceProperties = [
-			minecraft_version_range: project.property('minecraft_version_range'),
-			neo_version            : project.property('neo_version'),
-			mod_id                 : project.property('neo_mod_id'),
-			mod_name               : project.property('mod_name'),
-			mod_license            : project.property('mod_license'),
-			mod_version            : project.version
+			neoforge_version: project.property('neoforge_version'),
+			version: project.version
 	]
 	inputs.properties replaceProperties
 	expand replaceProperties

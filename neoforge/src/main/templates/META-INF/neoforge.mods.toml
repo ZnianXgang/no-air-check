@@ -1,9 +1,9 @@
-license="${mod_license}"
+license="CC0-1.0"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
+modId="no_air_check"
+version="${version}"
+displayName="No Air Check"
 authors="ZnianXgang"
 # Server-side only: do not make clients fail the mod-list comparison.
 displayTest="IGNORE_ALL_VERSION"
@@ -15,16 +15,16 @@ Disables the vanilla "standing on air" check that logs and force-resends blocks 
 [[mixins]]
 config="noaircheck.mixins.json"
 
-[[dependencies.${mod_id}]]
+[[dependencies.no_air_check]]
 modId="neoforge"
 type="required"
-versionRange="[${neo_version},)"
+versionRange="[${neoforge_version},)"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.no_air_check]]
 modId="minecraft"
 type="required"
-versionRange="${minecraft_version_range}"
+versionRange="[26,3,)"
 ordering="NONE"
 side="BOTH"
